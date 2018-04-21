@@ -18,14 +18,14 @@ onInputChange = (event) => {
 }
 
 clicked = () => {
-    console.log(fm);
-    fm(this.state.inputQuery).then( (val) => {
+    fm.findMozillian(this.state.inputQuery).then( (val) => {
+        console.log('GOTCHA');
+        console.log(val);
         this.setState({
             result: val
         });
     })
 }
-
 
 render() {
     return (
