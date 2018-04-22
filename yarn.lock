@@ -2737,9 +2737,9 @@ find-cache-dir@^1.0.0:
     make-dir "^1.0.0"
     pkg-dir "^2.0.0"
 
-find-mozillian@0.0.1-alpha:
-  version "0.0.1-alpha"
-  resolved "https://registry.yarnpkg.com/find-mozillian/-/find-mozillian-0.0.1-alpha.tgz#6f5186bea5317fc043bf61c928a6fdaf3701e3bd"
+find-mozillian@0.0.1-alpha3:
+  version "0.0.1-alpha3"
+  resolved "https://registry.yarnpkg.com/find-mozillian/-/find-mozillian-0.0.1-alpha3.tgz#4d578528e5b1c0fe7457d876dbb66d79a99c6d55"
   dependencies:
     node-fetch "^2.1.2"
 

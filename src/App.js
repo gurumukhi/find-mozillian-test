@@ -17,6 +17,52 @@ onInputChange = (event) => {
     });
 }
 
+/*
+const outputObjectTemplate = {
+  'matchingResults': [{
+    'name': '',
+    'details': {
+      'mail': '',
+      'citation': '',
+      'dateAddedOnCreditPage': ''
+    },
+    'noDetailsReason': ''
+  }],
+  'moreMatchesAvailable': false
+};
+*/
+
+getOutputForName = (obj) => {
+    console.log(obj);
+    if (obj.noDetailsReason) {
+        return "Name: " + obj.name + " | " + obj.noDetailsReason;
+    }
+    return "Name: " + obj.name + " | " +
+        "Mail: " + obj.details.mail + " | " +
+        "Citation: " + obj.details.citation + " | " +
+        "Mozillian since: " + obj.details.dateAddedOnCreditPage;
+}
+
+getOutputString = (obj) => {
+    if(!obj.matchingResults) {
+        return '';
+    }
+    if(obj.matchingResults.length === 0) {
+        return "Not a Mozillian :-/";
+    }
+    if(obj.matchingResults.length === 1) {
+        return this.getOutputForName(obj.matchingResults[0]);
+    }
+    let output = this.getOutputForName(obj.matchingResults[0]);
+    for(let i=1; i<obj.matchingResults.length; i++){
+        output += "_________" + this.getOutputForName(obj.matchingResults[i]);
+    }
+    if (obj.moreMatchesAvailable) {
+        output += "_________ + many more";
+    }
+    return output;
+}
+
 clicked = () => {
     fm.findMozillian(this.state.inputQuery).then( (val) => {
         console.log('GOTCHA');
@@ -38,7 +84,7 @@ render() {
         <button onClick = { this.clicked }> Naam </button>
 
         <div>
-        {this.state.result}
+        {this.getOutputString(this.state.result)}
         </div>
     </div>
     );
